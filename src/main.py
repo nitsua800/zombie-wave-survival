@@ -24,4 +24,4 @@ while running:
     # Tell pygame to update the screen
     pygame.display.flip()
     clock.tick(50)
-    pygame.display.set_caption("MY GAME fps: " + str(clock.get_fps()))
+    pygame.display.set_caption("Zombie Shooter fps: " + str(clock.get_fps()))
