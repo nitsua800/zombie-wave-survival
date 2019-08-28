@@ -1,4 +1,5 @@
 import pygame
+import image_util
 from player import Player
 from projectile import Bullet
 from enemy import Enemy
