@@ -10,7 +10,7 @@ screen = pygame.display.set_mode((game_width, game_height))
 clock = pygame.time.Clock()
 running = True
 
-background_image = pygame.image.load("../")
+background_image = pygame.image.load("../landscape.png")
 
 playerGroup = pygame.sprite.Group()
 projectilesGroup = pygame.sprite.Group()

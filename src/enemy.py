@@ -9,7 +9,7 @@ class Enemy(pygame.sprite.Sprite):
         self.y = y
         self.player = player
         self.hurtImage = pygame.image.load("../assets/Walker.png"")
-        self.image = pygame.image.load("../assets/"")
+        self.image = pygame.image.load("../assets/Walker_hurt.png"")
         self.rect = self.image.get_rect
         self.rect.center = (self.x, self.y)
         self.angle = 0

@@ -9,7 +9,7 @@ class Bullet(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.angle = angle
-        self.image = pygame.image.load("../assets/")
+        self.image = pygame.image.load("../assets/bullet.png")
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
         self.image, self.rect = toolbox.getRotatedImage(self.image, self.rect, self.angle)
