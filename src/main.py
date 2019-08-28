@@ -1,4 +1,5 @@
 import pygame
+import image_util
 from player import Player
 from projectile import Bullet
 from enemy import Enemy
@@ -10,7 +11,7 @@ screen = pygame.display.set_mode((game_width, game_height))
 clock = pygame.time.Clock()
 running = True
 
-background_image = pygame.image.load("../assets/BG_Sand.png")
+background_image = pygame.image.load("landscape.png")
 
 playerGroup = pygame.sprite.Group()
 projectilesGroup = pygame.sprite.Group()
