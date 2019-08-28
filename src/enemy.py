@@ -21,4 +21,3 @@ class Enemy(pygame.sprite.Sprite):
 
         angle._rads = math.radians(self.angle)
         self.x _move = math.cos(angle_rads) * self.speed
-        
