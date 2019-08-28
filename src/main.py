@@ -1,5 +1,6 @@
 import pygame
 
+
 # Start the game
 pygame.init()
 game_width = 1000
@@ -18,8 +19,6 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
-
-
 
     # Tell pygame to update the screen
     pygame.display.flip()
