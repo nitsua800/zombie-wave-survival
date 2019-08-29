@@ -2,7 +2,7 @@ import pygame
 import image_util
 from player import Player
 from projectile import Bullet
-from enemy import Enemy
+import enemy
 from wave import Wave
 # Start the game
 pygame.init()
@@ -19,17 +19,16 @@ enemiesGroup = pygame.sprite.Group()
 
 Player.containers = playerGroup
 Bullet.containers = projectilesGroup
-Enemy.containers = enemiesGroup
+enemy.Enemy.containers = enemiesGroup
 
 mr_player = Player(screen, game_width/2, game_height/2)
 
 wave = Wave(screen, 5,  game_width, game_height, enemiesGroup)
 
-# Enemy(screen, 100, 100, mr_player)
-# Enemy(screen, 100, 500, mr_player)
+enemy.Helicopter(screen, 100, 100, mr_player)
 
 
-wave.startWave(mr_player)
+#wave.startWave(mr_player)
 # ***************** Loop Land Below *****************
 # Everything under 'while running' will be repeated over and over again
 while running:

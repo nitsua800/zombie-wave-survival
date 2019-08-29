@@ -46,8 +46,9 @@ class Enemy(pygame.sprite.Sprite):
 class Brute(Enemy):
     def __init__(self, screen, x, y, base):
         super().__init__(screen, x, y, base)
+        self.normalImage = pygame.image.load(image_util.getImage("Brute.png")).convert_alpha()
         self.hurtImage = pygame.image.load(image_util.getImage("Brute_hurt.png")).convert_alpha()
-        self.image = pygame.image.load(image_util.getImage("Brute.png")).convert_alpha()
+        self.image = self.normalImage
         self.speed = 2
         self.health = 100
 
@@ -55,15 +56,18 @@ class Crawler(Enemy):
     def __init__(self, screen, x, y, base):
         super().__init__(screen, x, y, base)
         self.hurtImage = pygame.image.load(image_util.getImage("Crawler_hurt.png")).convert_alpha()
-        self.image = pygame.image.load(image_util.getImage("Crawler.png")).convert_alpha()
+        self.normalImage = self.normalImage
+        self.normalImage = pygame.image.load(image_util.getImage("Crawler.png")).convert_alpha()
         self.speed = 1.5
         self.health = 75
 
 class Helicopter(Enemy):
     def __init__(self, screen, x, y, base):
         super().__init__(screen, x, y, base)
-        self.hurtImage = pygame.image.load(image_util.getImage("Helicoptere_hurt.png")).convert_alpha()
-        self.image = pygame.image.load(image_util.getImage("Helicopter.png")).convert_alpha()
+        self.hurtImage = pygame.image.load(image_util.getImage("helicopter_hurt.png")).convert_alpha()
+        self.normalImage = pygame.image.load(image_util.getImage("helicopter.png")).convert_alpha()
+        self.normalImage = pygame.transform.scale(self.normalImage, (40, 40))
+        self.normalImage = self.normalImage
         self.speed = 3
         self.health = 80
 
