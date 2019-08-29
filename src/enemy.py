@@ -2,6 +2,7 @@ import pygame
 import math
 import toolbox
 from toolbox import SoundManager
+from score_manager import ScoreManager
 import image_util
 
 class Enemy(pygame.sprite.Sprite):
@@ -48,6 +49,7 @@ class Enemy(pygame.sprite.Sprite):
             self.health = 9999
             self.kill()
             SoundManager.getInstance().playSound('point.wav')
+            ScoreManager.score += 1
 
 
 class Brute(Enemy):

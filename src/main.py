@@ -4,6 +4,7 @@ from player import Player
 from projectile import Bullet
 import enemy
 from wave import Wave
+from score_manager import ScoreManager
 # Start the game
 pygame.init()
 game_width = 1000
@@ -31,8 +32,7 @@ enemy.Helicopter(screen, 100, 100, mr_player)
 pygame.mixer.music.load(image_util.getImage('Main_Theme.wav'))
 pygame.mixer.music.play(-1)
 
-font = pygame.font.SysFont('Comic Sans MS', 30)
-score_text = font.render('Some Text', False, (0, 0, 0))
+font = pygame.font.SysFont('Bodoni 72 Book', 100)
 # ***************** Loop Land Below *****************
 # Everything under 'while running' will be repeated over and over again
 while running:
@@ -64,7 +64,8 @@ while running:
     for enemy in enemiesGroup:
         enemy.update(projectilesGroup)
 
-    screen.blit(score_text, (0, 0))
+    score_text = font.render("Score: " + str(ScoreManager.score), True, (255, 255, 255))
+    screen.blit(score_text, (10, 10))
 
     # Tell pygame to update the screen
     pygame.display.flip()
