@@ -66,7 +66,7 @@ class Helicopter(Enemy):
         self.hurtImage = pygame.image.load(image_util.getImage("Helicoptere_hurt.png"))
         self.image = pygame.image.load(image_util.getImage("Helicopter.png"))
         self.speed = 3
-        self.health = 60
+        self.health = 80
 
 class Spider(Enemy):
     def __init__(self, screen, x, y, base):
@@ -74,4 +74,18 @@ class Spider(Enemy):
         self.hurtImage = pygame.image.load(image_util.getImage("Spider_hurt.png"))
         self.image = pygame.image.load(image_util.getImage("Spider.png"))
         self.speed = 10
+        self.health = 45
+class Runner(Enemy):
+    def __init__(self, screen, x, y, base):
+        super().__init__(screen, x, y, base)
+        self.hurtImage = pygame.image.load(image_util.getImage("Runner_hurt.png"))
+        self.image = pygame.image.load(image_util.getImage("Runner.png"))
+        self.speed = 100
+        self.health = 15
+class Motorcycle(Enemy):
+    def __init__(self, screen, x, y, base):
+        super().__init__(screen, x, y, base)
+        self.hurtImage = pygame.image.load(image_util.getImage("Motorcycle_hurt.png"))
+        self.image = pygame.image.load(image_util.getImage("Motorcycle.png"))
+        self.speed = 15
         self.health = 45
