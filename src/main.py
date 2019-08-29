@@ -52,7 +52,7 @@ while running:
     if keys[pygame.K_p]:
         if not waveComing:
             waveComing = True
-            wave = Wave(screen, 1,  game_width, game_height, enemiesGroup)
+            wave = Wave(screen, 5,  game_width, game_height, enemiesGroup)
             wave.startWave(mr_player)
 
 
@@ -64,7 +64,7 @@ while running:
         projectile.update()
     for enemy in enemiesGroup:
         enemy.update(projectilesGroup)
-        
+
     if not enemiesGroup.sprites():
         waveComing = False
 
