@@ -40,7 +40,7 @@ class Enemy(pygame.sprite.Sprite):
         self.screen.blit(image_to_draw, image_rect)
 
     def getHit(self, damage):
-        SoundManager.getInstance().playSound('hit.wav')
+        #SoundManager.getInstance().playSound('hit.wav')
         self.x -= self.x_move * 5
         self.y -= self.y_move * 5
         self.health -= damage
@@ -48,7 +48,7 @@ class Enemy(pygame.sprite.Sprite):
         if self.health <= 0:
             self.health = 9999
             self.kill()
-            SoundManager.getInstance().playSound('point.wav')
+            #SoundManager.getInstance().playSound('point.wav')
             ScoreManager.score += 1
 
 

@@ -13,6 +13,7 @@ screen = pygame.display.set_mode((game_width, game_height), pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 running = True
 background_image = pygame.image.load(image_util.getImage("landscape.png")).convert()
+waveComing = False
 
 playerGroup = pygame.sprite.Group()
 projectilesGroup = pygame.sprite.Group()
@@ -21,13 +22,7 @@ enemiesGroup = pygame.sprite.Group()
 Player.containers = playerGroup
 Bullet.containers = projectilesGroup
 enemy.Enemy.containers = enemiesGroup
-
 mr_player = Player(screen, game_width/2, game_height/2)
-wave = Wave(screen, 5,  game_width, game_height, enemiesGroup)
-
-enemy.Helicopter(screen, 100, 100, mr_player)
-
-#wave.startWave(mr_player)
 
 pygame.mixer.music.load(image_util.getImage('Main_Theme.wav'))
 pygame.mixer.music.play(-1)
@@ -54,6 +49,12 @@ while running:
         mr_player.move(0, 1)
     if pygame.mouse.get_pressed()[0]:
         mr_player.shoot()
+    if keys[pygame.K_p]:
+        if not waveComing:
+            waveComing = True
+            wave = Wave(screen, 1,  game_width, game_height, enemiesGroup)
+            wave.startWave(mr_player)
+
 
     screen.blit(background_image, (0, 0))
 
@@ -63,6 +64,9 @@ while running:
         projectile.update()
     for enemy in enemiesGroup:
         enemy.update(projectilesGroup)
+        
+    if not enemiesGroup.sprites():
+        waveComing = False
 
     score_text = font.render("Score: " + str(ScoreManager.score), True, (255, 255, 255))
     screen.blit(score_text, (10, 10))
