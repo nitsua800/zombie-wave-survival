@@ -3,6 +3,7 @@ import image_util
 from player import Player
 from projectile import Bullet
 from enemy import Enemy
+from wave import Wave
 # Start the game
 pygame.init()
 game_width = 1000
@@ -10,7 +11,7 @@ game_height = 650
 screen = pygame.display.set_mode((game_width, game_height))
 clock = pygame.time.Clock()
 running = True
-background_image = pygame.image.load(image_util.getImage("landscape.png"))
+background_image = pygame.image.load(image_util.getImage("landscape.png")).convert()
 
 playerGroup = pygame.sprite.Group()
 projectilesGroup = pygame.sprite.Group()
@@ -22,10 +23,13 @@ Enemy.containers = enemiesGroup
 
 mr_player = Player(screen, game_width/2, game_height/2)
 
+wave = Wave(screen, 5, enemiesGroup, game_width, game_height)
+
 Enemy (screen, 100, 100, mr_player)
 Enemy (screen, 100, 500, mr_player)
 
 
+wave.startWave(mr_player)
 # ***************** Loop Land Below *****************
 # Everything under 'while running' will be repeated over and over again
 while running:
@@ -48,7 +52,6 @@ while running:
     if pygame.mouse.get_pressed()[0]:
         mr_player.shoot()
 
-
     screen.blit(background_image, (0, 0))
 
     mr_player.update()
@@ -60,5 +63,5 @@ while running:
 
     # Tell pygame to update the screen
     pygame.display.flip()
-    clock.tick(50)
+    clock.tick(60)
     pygame.display.set_caption("Zombie Shooter fps: " + str(clock.get_fps()))

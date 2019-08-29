@@ -32,8 +32,6 @@ class Enemy(pygame.sprite.Sprite):
                 projectile.explode()
 
         image_to_draw, image_rect = toolbox.getRotatedImage(self.image, self.rect, self.angle)
-
-
         self.screen.blit(image_to_draw, image_rect)
 
     def getHit(self, damage):
