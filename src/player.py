@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.speed = 5
         self.angle = 0
         self.shoot_cooldown = 0
-        self.shoot_cooldown_max = 10
+        self.shoot_cooldown_max = 30
 
 
     def update(self):
@@ -28,8 +28,6 @@ class Player(pygame.sprite.Sprite):
         self.angle = toolbox.angleBetweenPoints(self.x, self.y, mouse_x, mouse_y)
 
         image_to_draw, image_rect = toolbox.getRotatedImage(self.image, self.rect, self.angle)
-
-
         self.screen.blit(image_to_draw, image_rect)
 
     def move (self, x_movement, y_movement):
