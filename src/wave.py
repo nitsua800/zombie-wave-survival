@@ -1,18 +1,19 @@
 import pygame
 import random
-from enemy import Enemy
+import enemy
 
 class Wave:
-    def __init__(self, screen, amount, x, maxY, *groups):
+    def __init__(self, screen, amount, posX, maxY, *groups):
         #self.enemies = enemies
+        print(posX)
         self.amount = amount
         self.groups = groups
         self.screen = screen
-        self.x = x
+        self.posX = posX
         self.maxY = maxY
 
     def startWave(self, player):
         for i in range(self.amount):
-            x = 0
-            y = random.randint(0, 900)
-            Enemy(self.screen, x, y, player)
+
+            y = random.randint(20, self.maxY)
+            enemy.Enemy(self.screen, self.posX, y, player)

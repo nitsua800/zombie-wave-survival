@@ -8,7 +8,7 @@ from wave import Wave
 pygame.init()
 game_width = 1000
 game_height = 650
-screen = pygame.display.set_mode((game_width, game_height), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((game_width, game_height))
 clock = pygame.time.Clock()
 running = True
 background_image = pygame.image.load(image_util.getImage("landscape.png")).convert()
@@ -23,7 +23,7 @@ Enemy.containers = enemiesGroup
 
 mr_player = Player(screen, game_width/2, game_height/2)
 
-wave = Wave(screen, 5, enemiesGroup, game_width, game_height)
+wave = Wave(screen, 5,  game_width, game_height, enemiesGroup)
 
 # Enemy(screen, 100, 100, mr_player)
 # Enemy(screen, 100, 500, mr_player)
@@ -65,4 +65,3 @@ while running:
     pygame.display.flip()
     clock.tick(60)
     pygame.display.set_caption("Zombie Shooter fps: " + str(clock.get_fps()))
-    

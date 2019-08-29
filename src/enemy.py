@@ -15,12 +15,12 @@ class Enemy(pygame.sprite.Sprite):
         self.image = self.normalImage
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
-        self.angle = 0
+        self.angle = 180
         self.speed = 5
-        self.health = 10
+        self.health = 50
 
     def update(self, projectiles):
-        self.x_move = 0.1 * self.speed
+        self.x_move = -0.1 * self.speed
         self.y_move = 0
         self.x += self.x_move
         self.rect.center = (self.x, self.y)
