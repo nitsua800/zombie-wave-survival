@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.screen = screen
         self.x = x
         self.y = y
-        self.image = pygame.image.load(image_util.getImage("Main_Character.png"))
+        self.image = pygame.image.load(image_util.getImage("Main_Character.png")).convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
         self.speed = 5

@@ -8,7 +8,7 @@ from wave import Wave
 pygame.init()
 game_width = 1000
 game_height = 650
-screen = pygame.display.set_mode((game_width, game_height))
+screen = pygame.display.set_mode((game_width, game_height), pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 running = True
 background_image = pygame.image.load(image_util.getImage("landscape.png")).convert()
@@ -25,8 +25,8 @@ mr_player = Player(screen, game_width/2, game_height/2)
 
 wave = Wave(screen, 5, enemiesGroup, game_width, game_height)
 
-Enemy (screen, 100, 100, mr_player)
-Enemy (screen, 100, 500, mr_player)
+# Enemy(screen, 100, 100, mr_player)
+# Enemy(screen, 100, 500, mr_player)
 
 
 wave.startWave(mr_player)
