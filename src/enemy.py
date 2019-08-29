@@ -16,6 +16,13 @@ class Enemy(pygame.sprite.Sprite):
         self.speed = 2.5
         self.health = 50
     def update(self, projectile):
+class Brute(Enemy):
+
+class Crawler(Enemy):
+
+class helicopter(Enemy):
+
+class Spider(Enemy):
 
         self.angle = toolbox.angleBetweenPoints(self.x, self.y, self.player.x, self.player.y )
 
@@ -38,6 +45,7 @@ class Enemy(pygame.sprite.Sprite):
         self.x -= self.x_move * 5
         self.y -= self.y_move * 5
         self.health -= damage
+        self.hurtImage = pygame.image.load(image_util.getImage("Walker_hurt.png"))
         if self.health <= 0:
             self.health = 9999
             self.kill()
