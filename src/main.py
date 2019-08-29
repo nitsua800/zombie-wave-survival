@@ -62,3 +62,4 @@ while running:
     pygame.display.flip()
     clock.tick(50)
     pygame.display.set_caption("Zombie Shooter fps: " + str(clock.get_fps()))
+    
