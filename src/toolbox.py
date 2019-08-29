@@ -21,14 +21,14 @@ class SoundManager:
         if SoundManager.__instance == None:
             SoundManager()
         return SoundManager.__instance
-    
+
     def __init__(self):
         if SoundManager.__instance != None:
             raise Exception("This class is a singleton.")
         else:
             SoundManager.__instance = self
             self.sound_library = {}
-    
+
     def playSound(self, name):
         sound = self.sound_library.get(name)
         if sound == None:

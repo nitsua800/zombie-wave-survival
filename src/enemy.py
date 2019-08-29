@@ -49,6 +49,7 @@ class Enemy(pygame.sprite.Sprite):
             self.kill()
             SoundManager.getInstance().playSound('point.wav')
 
+
 class Brute(Enemy):
     def __init__(self, screen, x, y, base):
         super().__init__(screen, x, y, base)

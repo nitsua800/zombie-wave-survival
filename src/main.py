@@ -27,6 +27,9 @@ wave.startWave(mr_player)
 
 pygame.mixer.music.load(image_util.getImage('Main_Theme.wav'))
 pygame.mixer.music.play(-1)
+
+font = pygame.font.SysFont('Comic Sans MS', 30)
+score_text = font.render('Some Text', False, (0, 0, 0))
 # ***************** Loop Land Below *****************
 # Everything under 'while running' will be repeated over and over again
 while running:
@@ -57,6 +60,8 @@ while running:
         projectile.update()
     for enemy in enemiesGroup:
         enemy.update(projectilesGroup)
+
+    screen.blit(score_text, (0, 0))
 
     # Tell pygame to update the screen
     pygame.display.flip()
