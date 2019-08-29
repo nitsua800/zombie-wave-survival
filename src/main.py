@@ -10,8 +10,7 @@ game_height = 650
 screen = pygame.display.set_mode((game_width, game_height))
 clock = pygame.time.Clock()
 running = True
-
-background_image = pygame.image.load("../assets/landscape.png")
+background_image = pygame.image.load(image_util.getImage("landscape.png"))
 
 playerGroup = pygame.sprite.Group()
 projectilesGroup = pygame.sprite.Group()
@@ -37,7 +36,7 @@ while running:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
 
-            keys = pygame.key.get_pressed()
+    keys = pygame.key.get_pressed()
     if keys[pygame.K_d]:
         mr_player.move(1, 0)
     if keys[pygame.K_a]:

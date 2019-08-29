@@ -1,5 +1,6 @@
 import pygame
 import math
+import image_util
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, screen, x, y, player):
@@ -7,9 +8,9 @@ class Enemy(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.player = player
-        self.hurtImage = pygame.image.load("../assets/Walker.png")
-        self.image = pygame.image.load("../assets/Walker_hurt.png")
-        self.rect = self.image.get_rect
+        self.hurtImage = pygame.image.load(image_util.getImage("Walker_hurt.png"))
+        self.image = pygame.image.load(image_util.getImage("Walker.png"))
+        self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
         self.angle = 0
         self.speed = 2.5

@@ -1,7 +1,10 @@
-import os
 from pathlib import Path
+from os import path
 
 def getImage(fileName):
-    root = Path(os.path.dirname(__file__)).parent
+    root = Path(path.dirname(__file__)).parent / "assets" / fileName
     print(root)
-    return root
+    if root.exists():
+        return str(root)
+    else:
+        return "No image"
