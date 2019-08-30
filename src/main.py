@@ -5,6 +5,7 @@ from projectile import Bullet
 import enemy
 from wave import Wave
 from score_manager import ScoreManager
+from base import Base
 # Start the game
 pygame.init()
 game_width = 1000
@@ -18,11 +19,15 @@ waveComing = False
 playerGroup = pygame.sprite.Group()
 projectilesGroup = pygame.sprite.Group()
 enemiesGroup = pygame.sprite.Group()
+baseGroup = pygame.sprite.Group()
 
 Player.containers = playerGroup
 Bullet.containers = projectilesGroup
 enemy.Enemy.containers = enemiesGroup
-mr_player = Player(screen, game_width/2, game_height/2)
+Base.containers = baseGroup
+mr_player = Player(screen, 180, game_height/2)
+
+base = Base(screen, 100, game_height/2)
 
 pygame.mixer.music.load(image_util.getImage('Main_Theme.wav'))
 pygame.mixer.music.play(-1)
@@ -53,11 +58,11 @@ while running:
         if not waveComing:
             waveComing = True
             wave = Wave(screen, 5,  game_width, game_height, enemiesGroup)
-            wave.startWave(mr_player)
+            wave.startWave()
 
 
     screen.blit(background_image, (0, 0))
-
+    base.update()
     mr_player.update()
 
     for projectile in projectilesGroup:
@@ -75,5 +80,3 @@ while running:
     pygame.display.flip()
     clock.tick(60)
     pygame.display.set_caption("Zombie Shooter fps: " + str(clock.get_fps()))
-
-pygame.mixer.music.unload()

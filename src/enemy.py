@@ -6,9 +6,10 @@ import image_util
 
 class Enemy(pygame.sprite.Sprite):
 
-    def __init__(self, screen, x, y):
+    def __init__(self, screen, x, y, target):
         super().__init__(self.containers)
         self.screen = screen
+        self.target = target
         self.x = x
         self.y = y
         self.normalImage = pygame.image.load(image_util.getImage("Walker.png")).convert_alpha()
@@ -21,9 +22,14 @@ class Enemy(pygame.sprite.Sprite):
         self.health = 50
 
     def update(self, projectiles):
-        self.x_move = -0.1 * self.speed
-        self.y_move = 0
-        self.x += self.x_move
+
+        self.angle = toolbox.angleBetweenPoints(self.x, self.y, self.target.x, self.y)
+
+        angle_rads = math.radians(self.angle)
+        x_move = math.cos(angle_rads) * self.speed
+        y_move = -math.sin(angle_rads) * self.speed
+        self.x += x_move
+        self.y += y_move
         self.rect.center = (self.x, self.y)
         self.image = self.normalImage
 
