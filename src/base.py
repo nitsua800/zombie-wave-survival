@@ -16,7 +16,7 @@ class Base(pygame.sprite.Sprite):
         self.image = self.normalImage
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
-        self.health_max = 1000000
+        self.health_max = 10000
         self.health = self.health_max
         self.health_bar_width = self.image.get_width()
         self.health_bar_hight = 20
@@ -54,7 +54,6 @@ class Base(pygame.sprite.Sprite):
     def getHit(self, damage):
         self.hurtTimer = 5
         self.health -= damage
-        self.image = self.hurtImage
         if self.health <= 0:
             self.health = 0
             self.alive = False
