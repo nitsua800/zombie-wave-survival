@@ -3,7 +3,7 @@ import image_util
 from player import Player
 from projectile import Bullet
 import enemy
-from wave import Wave
+from wave_controller import WaveController
 from score_manager import ScoreManager
 from base import Base
 # Start the game
@@ -26,13 +26,13 @@ Bullet.containers = projectilesGroup
 enemy.Enemy.containers = enemiesGroup
 Base.containers = baseGroup
 mr_player = Player(screen, 180, game_height/2)
-
 base = Base(screen, 100, game_height/2)
+wave_controller = WaveController(screen, game_width, game_height, enemiesGroup)
 
 pygame.mixer.music.load(image_util.getImage('Main_Theme.wav'))
 pygame.mixer.music.play(-1)
 
-font = pygame.font.SysFont('Bodoni 72 Book', 100)
+font = pygame.font.SysFont('Bodoni 72 Book', 60)
 # ***************** Loop Land Below *****************
 # Everything under 'while running' will be repeated over and over again
 while running:
@@ -57,9 +57,7 @@ while running:
     if keys[pygame.K_p]:
         if not waveComing:
             waveComing = True
-            wave = Wave(screen, 5,  game_width, game_height, enemiesGroup)
-            wave.startWave()
-
+            wave_controller.new_wave(mr_player)
 
     screen.blit(background_image, (0, 0))
     base.update()
@@ -75,6 +73,9 @@ while running:
 
     score_text = font.render("Score: " + str(ScoreManager.score), True, (255, 255, 255))
     screen.blit(score_text, (10, 10))
+
+    wave_text = font.render("Wave: " + str(wave_controller.wave_number), True, (255, 255, 255))
+    screen.blit(wave_text, (800, 10))
 
     # Tell pygame to update the screen
     pygame.display.flip()
