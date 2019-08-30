@@ -1,20 +1,16 @@
 import pygame
 import math
 import toolbox
-from toolbox import SoundManager
 from score_manager import ScoreManager
 import image_util
 
 class Enemy(pygame.sprite.Sprite):
 
-    soundManager = SoundManager.getInstance()
-
-    def __init__(self, screen, x, y, target):
+    def __init__(self, screen, x, y):
         super().__init__(self.containers)
         self.screen = screen
         self.x = x
         self.y = y
-        self.target = target
         self.normalImage = pygame.image.load(image_util.getImage("Walker.png")).convert_alpha()
         self.hurtImage = pygame.image.load(image_util.getImage("Walker_hurt.png")).convert_alpha()
         self.image = self.normalImage
@@ -40,7 +36,7 @@ class Enemy(pygame.sprite.Sprite):
         self.screen.blit(image_to_draw, image_rect)
 
     def getHit(self, damage):
-        SoundManager.getInstance().playSound('hit.wav')
+        toolbox.playSound('hit.wav')
         self.x -= self.x_move * 5
         self.y -= self.y_move * 5
         self.health -= damage
@@ -48,7 +44,7 @@ class Enemy(pygame.sprite.Sprite):
         if self.health <= 0:
             self.health = 9999
             self.kill()
-            SoundManager.getInstance().playSound('point.wav')
+            toolbox.playSound('point.wav')
             ScoreManager.score += 1
 
 
