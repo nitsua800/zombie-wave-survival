@@ -17,7 +17,6 @@ class Wave:
             y = random.randint(20, self.maxY)
 
             index = random.randint(0, len(self.enemies) - 1)
-            print(index)
             type  = self.enemies[index]
             if type == "walker":
                 enemy.Enemy(self.screen, x, y, target)
