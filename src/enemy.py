@@ -6,7 +6,7 @@ import image_util
 
 class Enemy(pygame.sprite.Sprite):
 
-    def __init__(self, screen, x, y):
+    def __init__(self, screen, x, y, base):
         super().__init__(self.containers)
         self.screen = screen
         self.x = x
@@ -65,6 +65,7 @@ class Crawler(Enemy):
         self.normalImage = pygame.image.load(image_util.getImage("Crawler.png")).convert_alpha()
         self.speed = 1.5
         self.health = 75
+        self.angle = 90
 
 class Helicopter(Enemy):
     def __init__(self, screen, x, y, base):
