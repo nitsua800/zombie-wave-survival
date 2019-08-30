@@ -57,10 +57,10 @@ while running:
     if keys[pygame.K_p]:
         if not waveComing:
             waveComing = True
-            wave_controller.new_wave(mr_player)
+            wave_controller.new_wave(base)
 
     screen.blit(background_image, (0, 0))
-    base.update()
+    base.update(enemiesGroup)
     mr_player.update()
 
     for projectile in projectilesGroup:
